@@ -1,17 +1,20 @@
 {
 	"name": "DPsim",
-	"image": "sogno/dpsim:dev-vscode",
+	// "image": "sogno/dpsim:dev-vscode",
 	// uncomment to build devcontainer image locally
-	// "build": {
-	// 	"dockerfile": "../packaging/Docker/Dockerfile.dev",
-	// 	"target": "dev-vscode",
-	// 	"context": ".."
-	// },
+	"build": {
+		"dockerfile": "../packaging/Docker/Dockerfile.dev",
+		"target": "dev-vscode",
+		"context": ".."
+	},
 	"remoteUser": "dpsim",
 	"runArgs": [
 		"--privileged",
 		"--security-opt=seccomp=unconfined"
 	],
+	"containerEnv": {
+        "PYTHONPATH": "/workspaces/dpsim/build:/workspaces/dpsim/python/src/dpsim"
+    },
 	"customizations": {
 		"vscode": {
 			"extensions": [
